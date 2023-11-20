@@ -1,0 +1,12 @@
+name: RestAPITesting
+on:
+#workflow starts
+    repository_dispatch:
+      types: [test_result]
+jobs:
+  Build:  
+    runs-on: ubuntu-latest
+    steps:
+      - env:
+          MESSAGE: ${{ github.event.client_payload.message }}
+        run: echo $MESSAGE
